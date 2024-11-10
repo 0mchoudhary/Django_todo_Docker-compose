@@ -3,36 +3,54 @@ A simple todo app built with django
 
 ![todo App](https://raw.githubusercontent.com/shreys7/django-todo/develop/staticfiles/todoApp.png)
 ### Setup
+
+Create a EC2 instance of ubuntu of instance type of t2.micro in AWS
+
+Edit inbound rules:
+    Add Security Rules:
+      Create a Custom TCP of Port Range 8000 with source of Anywhere IPv4.
+
+Now Connect the instance.
+Update the instance
+```bash
+  sudo apt update
+```
+
 To get this repository, run the following command inside your git enabled terminal
 ```bash
-$ git clone https://github.com/shreys7/django-todo.git
+$ git clone https://github.com/0mchoudhary/Django_todo_Docker-compose.git
 ```
-You will need django to be installed in you computer to run this app. Head over to https://www.djangoproject.com/download/ for the download guide
 
-Once you have downloaded django, go to the cloned repo directory and run the following command
-
+Change the permission of directory
 ```bash
-$ python manage.py makemigrations
+chmod 777 Django_todo_Docker
 ```
 
-This will create all the migrations file (database migrations) required to run this App.
-
-Now, to apply this migrations run the following command
+Install Docker
 ```bash
-$ python manage.py migrate
+  sudo apt install docker.io -y
 ```
-
-One last step and then our todo App will be live. We need to create an admin user to run this App. On the terminal, type the following command and provide username, password and email for the admin user
+Install Docker Compose
 ```bash
-$ python manage.py createsuperuser
+  sudo apt install docker-compose -y
 ```
 
-That was pretty simple, right? Now let's make the App live. We just need to start the server now and then we can start using our simple todo App. Start the server by following command
-
+Change the directory
 ```bash
-$ python manage.py runserver
+  cd Django_todo_Docker-compose
 ```
 
-Once the server is hosted, head over to http://127.0.0.1:8000/todos for the App.
+To Start 
+```bash
+  sudo docker-compose up -d --force-recreate --no-deps --build web
+```
+
+To Stop
+```bash
+  sudo docker-compose down
+```
+  
+
+Once the server is hosted, head over to http:$(YOUR_IP_ADDRESS)/todos for the App.
 
 Cheers and Happy Coding :)
