@@ -23,7 +23,7 @@ To get this repository, run the following command inside your git enabled termin
 
 Change the permission of directory
 ```bash
-chmod 777 Django_todo_Docker
+chmod 777 Django_todo_Docker-compose
 ```
 
 Install Docker
